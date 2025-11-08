@@ -11,8 +11,12 @@
 ```4d
 var $GatewayAI : cs.server
 $GatewayAI:=cs.server.new()
-
-$isRunning:=$GatewayAI.isRunning()
-
 $GatewayAI.start({port: 8080})
+$isRunning:=$GatewayAI.isRunning()
+```
+
+```4d
+var $GatewayAI : cs.server
+$GatewayAI:=cs.server.new()
+$GatewayAI.terminate()
 ```
