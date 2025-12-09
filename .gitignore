@@ -3,4 +3,3 @@ noveum-ai-gateway/userPreferences.*
 noveum-ai-gateway/Project/DerivedData/*
 noveum-ai-gateway/Libraries/lib4d-arm64.dylib
 noveum-ai-gateway/Resources/en.lproj/syntaxEN.json
-api-keys/*
