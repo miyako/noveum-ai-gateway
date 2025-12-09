@@ -11,7 +11,7 @@ layout: default
 
 #### Abstract
 
-[**Noveum AI Gateway**](https://github.com/noveum/ai-gateway) is a proxy server that routes local HTTP requests to various AI providers.
+[**Noveum AI Gateway**](https://github.com/noveum/ai-gateway) is a proxy server that routes local HTTP requests to various AI providers:
 
 - OpenAI
 - GROQ
