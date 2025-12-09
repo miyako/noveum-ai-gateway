@@ -47,9 +47,16 @@ Or, use AI Kit:
 var $AIClient : cs.AIKit.OpenAI
 $AIClient:=cs.AIKit.OpenAI.new({apiKey: "your-openai-api-key"})
 $AIClient.baseURL:="http://127.0.0.1:8080/v1"
+$AIClient.customHeaders:={}
+$AIClient.customHeaders["x-provider"]:="openai"
 
-var $messages : Text
-$messages:="Hello!"
+var $messages : Collection
+$messages:=[{role: "user"; content: "Hello!"}]
+
+var $ChatCompletionsParameters : cs.AIKit.OpenAIChatCompletionsParameters
+$ChatCompletionsParameters:=cs.AIKit.OpenAIChatCompletionsParameters.new()
+$ChatCompletionsParameters.model:="gpt-4"
+$ChatCompletionsParameters.stream:=False
 
 var $chatCompletionsResult : cs.AIKit.OpenAIChatCompletionsResult
 $chatCompletionsResult:=$AIClient.chat.completions.create($messages)
