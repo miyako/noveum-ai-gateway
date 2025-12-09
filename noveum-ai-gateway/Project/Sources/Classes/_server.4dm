@@ -13,4 +13,8 @@ Function start($option : Object) : 4D:C1709.SystemWorker
 		This:C1470.controller.variables.PORT:=String:C10($option.port)
 	End if 
 	
+	If (Value type:C1509($option.rust_log)=Is text:K8:3) && ($option.rust_log#"")
+		This:C1470.controller.variables.RUST_LOG:=String:C10($option.rust_log)
+	End if 
+	
 	return This:C1470.controller.execute($command; Null:C1517; $option.data).worker
