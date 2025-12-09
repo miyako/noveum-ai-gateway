@@ -13,6 +13,9 @@ layout: default
 
 [**Noveum AI Gateway**](https://github.com/noveum/ai-gateway) is a proxy server that routes local HTTP requests to various AI providers.
 
+- OpenAI
+- GROQ
+
 #### Usage
 
 Instantiate `cs.GatewayAI.server` in your *On Startup* database method:
@@ -74,11 +77,11 @@ $GatewayAI.terminate()
 
 The API is compatibile with [Open AI](https://platform.openai.com/docs/api-reference/embeddings). 
 
-|Class|API|Availability|
-|-|-|:-:|
-|Models|`/v1/models`|✅|
-|Chat|`/v1/chat/completions`|✅|
-|Images|`/v1/images/generations`|✅|
-|Moderations|`/v1/moderations`|✅|
-|Embeddings|`/v1/embeddings`|✅|
-|Files|`/v1/files`|✅|
+|Class|API|OpenAI|GROQ|Anthropic|
+|-|-|:-:|||
+|Models|`/v1/models`|✅|✅||
+|Chat|`/v1/chat/completions`|✅|✅||
+|Images|`/v1/images/generations`||||
+|Moderations|`/v1/moderations`||||
+|Embeddings|`/v1/embeddings`||||
+|Files|`/v1/files`||||
