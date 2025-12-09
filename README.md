@@ -9,14 +9,14 @@
 ## usage
 
 ```4d
-var $GatewayAI : cs.server
-$GatewayAI:=cs.server.new()
+var $GatewayAI : cs.GatewayAI.server
+$GatewayAI:=cs.GatewayAI.server.new()
 $GatewayAI.start({port: 8080})
 $isRunning:=$GatewayAI.isRunning()
 ```
 
 ```4d
-var $GatewayAI : cs.server
-$GatewayAI:=cs.server.new()
+var $GatewayAI : cs.GatewayAI.server
+$GatewayAI:=cs.GatewayAI.server.new()
 $GatewayAI.terminate()
 ```
