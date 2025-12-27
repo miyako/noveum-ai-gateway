@@ -18,9 +18,36 @@ layout: default
 Instantiate `cs.GatewayAI.server` in your *On Startup* database method:
 
 ```4d
-var $GatewayAI : cs.GatewayAI.server
-$GatewayAI:=cs.GatewayAI.server.new()
-$GatewayAI.start({port: 8080})
+var $GatewayAI : cs.GatewayAI
+
+If (False)
+    $GatewayAI:=cs.GatewayAI.new()  //default
+Else 
+    
+    var $port : Integer
+    $port:=8080
+    
+    var $event : cs.event.event
+    $event:=cs.event.event.new()
+    /*
+        Function onError($params : Object; $error : cs.event.error)
+        Function onSuccess($params : Object; $models : cs.event.models)
+        Function onTerminate($worker : 4D.SystemWorker; $params : Object)
+    */
+    
+    $event.onError:=Formula(ALERT($2.message))
+    $event.onSuccess:=Formula(ALERT($2.models.extract("name").join(",")+" started!"))
+    $event.onTerminate:=Formula(LOG EVENT(Into 4D debug message; (["process"; $1.pid; "terminated!"].join(" "))))
+    
+    var $options : Object
+    $options:={}
+    
+    /*
+        # Or with custom port
+        PORT=8080 noveum-ai-gateway
+    */
+    $GatewayAI:=cs.GatewayAI.new($port; $options; $event)
+End if 
 ```
 
 Unless the server is already running (in which case the costructor does nothing), the following procedure runs in the background:

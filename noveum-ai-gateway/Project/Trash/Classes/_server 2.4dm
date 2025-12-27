@@ -1,4 +1,4 @@
-Class extends _GatewayAI
+Class extends _CTranslate2
 
 Class constructor($controller : 4D:C1709.Class)
 	
@@ -11,13 +11,13 @@ Function start($option : Object) : 4D:C1709.SystemWorker
 	var $command : Text
 	$command:=This:C1470.escape(This:C1470.executablePath)
 	
-	If (Value type:C1509($option.port)=Is real:K8:4) && ($option.port>0)
-		This:C1470.controller.variables.PORT:=String:C10($option.port)
-	End if 
+	$command+=" --server "
 	
-	If (Value type:C1509($option.rust_log)=Is text:K8:3) && ($option.rust_log#"")
-		This:C1470.controller.variables.RUST_LOG:=String:C10($option.rust_log)
-	End if 
+	Case of 
+		: (Value type:C1509($option.model)=Is object:K8:27) && (OB Instance of:C1731($option.model; 4D:C1709.Folder)) && ($option.model.exists)
+			$command+=" --model "
+			$command+=This:C1470.escape(This:C1470.expand($option.model).path)
+	End case 
 	
 	var $arg : Object
 	var $valueType : Integer
@@ -25,7 +25,7 @@ Function start($option : Object) : 4D:C1709.SystemWorker
 	
 	For each ($arg; OB Entries:C1720($option))
 		Case of 
-			: (["port"; "rust_log"; "help"; "version"].includes($arg.key))
+			: (["server"; "model"; "device"; "help"; "version"].includes($arg.key))
 				continue
 		End case 
 		$valueType:=Value type:C1509($arg.value)

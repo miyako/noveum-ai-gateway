@@ -10,7 +10,7 @@ Class constructor($class : 4D:C1709.Class)
 	var $controller : 4D:C1709.Class
 	var $superclass : 4D:C1709.Class
 	$superclass:=$class.superclass
-	$controller:=cs:C1710._GatewayAI_Controller
+	$controller:=cs:C1710._CTranslate2_Controller
 	
 	While ($superclass#Null:C1517)
 		If ($superclass.name=$controller.name)
@@ -20,7 +20,7 @@ Class constructor($class : 4D:C1709.Class)
 		$superclass:=$superclass.superclass
 	End while 
 	
-	Super:C1705("noveum-ai-gateway"; $controller)
+	Super:C1705("ct2-embedding-cli"; $controller)
 	
 Function bind($option : Object; $properties : Collection) : cs:C1710._CLI
 	

@@ -1,3 +1,3 @@
-var $GatewayAI : cs:C1710.server
-$GatewayAI:=cs:C1710.server.new()
+var $GatewayAI : cs:C1710.GatewayAI
+$GatewayAI:=cs:C1710.GatewayAI.new()
 $GatewayAI.terminate()
